@@ -22,14 +22,31 @@ Data privacy laws protect the personally identifiable information of all riders.
 * Created additional columns to store the individual values for the month, day, and year.
 * The day_of_week column was changed to contain the string for the day of the week, no longer storing an integer to represent the day.
 * A file was exported containing the mean ride_length data per day of the week for each member_casual group.
+* Within Excel, ride_length unit was changed from seconds to minutes.
 
 ## Summary of Analysis
+For the median ride length, Members averaged 13.7 minutes per ride. Casuals averaged 91.31 minutes per ride. 
+The daily median ride length shows a steady line for Member ride length throughout the week. See figure 1 in Visualizations for reference.
+Casual ride length starts at a slow decline at the beginning of the week, with a large spike occurring on Thursdays, then returning to normal ride length over the next 3 days of the week. See figure 1 in Visualizations for reference.
 
+Members ride frequently during the weekdays. See figure 2 in Visualizations for reference.
+The number of casual riders drops at the start of the work week and starts to increase as the work week comes to a close. See figure 2 in Visualizations for reference.
 
+During Q1 of 2019, there were fewer than 1.5 million casual rides. In Q1 of 2020, we see this value triple to a bit over 4.5 million casual rides. See figure 3 in Visualizations for reference.
+During Q1 of 2019 and Q1 of 2020, member rides maintained over 4.75 million. See figure 3 in Visualizations for reference.
 
 ## Visualizations
+Figure 1:
 
+![image](https://github.com/user-attachments/assets/1a26805d-8312-43c1-abcc-0798a5c7b30f)
 
+Figure 2:
+
+![image](https://github.com/user-attachments/assets/dae33708-8850-4e4e-8e0b-c4a6a449e55c)
+
+Figure 3:
+
+![image](https://github.com/user-attachments/assets/8a130b7e-c372-4305-aeb8-348964aea839)
 
 
 ## Recommendations:
