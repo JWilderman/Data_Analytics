@@ -32,8 +32,11 @@ Casual ride length starts at a slow decline at the beginning of the week, with a
 Members ride frequently during the weekdays. See figure 2 in Visualizations for reference.
 The number of casual riders drops at the start of the work week and starts to increase as the work week comes to a close. See figure 2 in Visualizations for reference.
 
-During Q1 of 2019, there were fewer than 25 thousand casual rides. In Q1 of 2020, we see this value almost doubling, increasing to 44 thousand casual rides. See figure 3 in Visualizations for reference.
 During Q1 of 2019 and Q1 of 2020, member rides maintained over 340 thousand. See figure 3 in Visualizations for reference.
+During Q1 of 2019, there were fewer than 25 thousand casual rides. In Q1 of 2020, we see this value almost doubling, increasing to 44 thousand casual rides. See figure 3 in Visualizations for reference.
+
+Members ride more frequently at hours between 6 am to 9 am and 4 pm to 6 pm. See figure 4 in Visualizations for reference.
+Casual users ride more frequently between the hours of 11 am to 5 pm. See figure 4 in Visualizations for reference.
 
 ## Visualizations:
 Figure 1:
@@ -46,12 +49,19 @@ Figure 2:
 
 Figure 3:
 
-![image](https://github.com/user-attachments/assets/d8338c38-faab-4e1e-ba9e-fbc66c0d34cc)
+![image](https://github.com/user-attachments/assets/31b6d5c6-f309-4515-aad6-99c69de01cf0)
+
+Figure 4:
+
+![image](https://github.com/user-attachments/assets/f0502a93-b830-4a42-805a-557428ee8973)
+
 
 ## Analysis of Data:
+Members of Divvy appear to prefer shorter ride lengths than casual users, but they ride frequently throughout the entire work week. Members likely use Divvy bikes as transportation to commute to and from work. This would explain consistently shorter ride times throughout the week, with slight shifts occurring on the weekends. 
 
+Casual users of Divvy prefer longer ride lengths, but ride more infrequently than members do. Casual users appear to use Divvy bikes for longer activities such as sightseeing, running errands, or leisure purposes.
 
 ## Recommendations:
-* asd
-* asd
-* asd
+1. With casual Divvy users preferring to ride less frequently with longer ride times, casual users would be more likely to become members if members were given lower rates on rides exceeding a specified ride time. With a discounted rate offered on longer rides, it can turn even infrequent Divvy users into subscribers due to the savings that are offered.
+2. If members were offered discounts during slower hours, such as between 12 pm to 3 pm, casual users would be incentivised to become members since more of their hours of use fall in that period.
+3. Offering incentives for use during the weekends for members might be another method that Divvy could use to try to get more casual users to become members, as well as increasing usage by current members.
