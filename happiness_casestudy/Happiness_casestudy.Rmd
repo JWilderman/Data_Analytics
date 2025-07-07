@@ -1,0 +1,144 @@
+---
+title: "World Happiness Case Study"
+author: "Jace Wilderman"
+date: "2025-07-06"
+output: html_document
+---
+
+## Background information
+This case study uses information from the World Happiness Report to examine the relationship between the happiness score of a country or region and several different factors.
+During this case study, we primarily use the 2019 World Happiness Report for our data. 
+However, at the end we will look at the score changes between 2018 and 2019 and see how each factor has changed as well.
+
+
+## Install and load 'tidyverse' packages (optional)
+
+If `tidyverse` has not already been installed and loaded, run the code segment below to ensure that there will not be issues when calling functions included with the `tidyverse` package.
+
+```{r installing and loading tidyverse, echo=FALSE, message=FALSE}
+library(tidyverse)  
+```
+
+## Importing Data
+
+Run the code below to load the 2019 World Happiness Report `2019.csv` to a data frame.
+The rename function is also used to change the names of the columns.
+
+```{r load 2019 data and rename columns, echo=FALSE, message=FALSE}
+happiness_2019 <- read_csv("2019.csv")
+
+happiness_2019 <- rename(happiness_2019, 
+                         Happiness_Rank = "Overall rank",
+                         Country = "Country or region",
+                         Score = Score,
+                         Economy = "GDP per capita",
+                         Social_support = "Social support",
+                         Life_expectancy = "Healthy life expectancy",
+                         Freedom_of_choice = "Freedom to make life choices",
+                         Generosity = Generosity,
+                         Perceptions_of_corruption = "Perceptions of corruption")
+```
+
+## Plotting correlations
+
+With this first chart, we plot how Economy correlates to Score to see if there are any trends that can be defined.
+We include a trendline to highlight the trend we can see the plots following.
+
+```{r Plotting how Economy correlates to Score, echo=FALSE}
+ggplot(data = happiness_2019, mapping = aes(x = Score, y = Economy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+With this second chart, we view the correlation between Social_support and Score.
+
+```{r Plotting how Social_support correlates to Score, echo=FALSE}
+ggplot(data = happiness_2019, mapping = aes(x = Score, y = Social_support)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+```
+
+This third chart shows the correlation that Life_expectancy has on Score.
+
+```{r Plotting how Life_expectancy correlates to Score, echo=FALSE}
+ggplot(data = happiness_2019, mapping = aes(x = Score, y = Life_expectancy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+With each of these charts, we can see that each of these factors play some part in the happiness score of a country.
+
+## Importing data for 2018 World Happiness Report
+
+To gain a better view on how the changes in these factors affect happiness scores.
+
+```{r load 2018 data and viewing dataframe structures, echo=FALSE, message=FALSE}
+happiness_2018 <- read_csv("2018.csv")
+
+str(happiness_2019)
+str(happiness_2018)
+```
+
+There are some differences in data structure and column names, so we will address those before we use the data frame. 
+After running this code segment, we will get a warning, but this is expected and will not cause issues.
+
+```{r rename columns and change data structure, echo=FALSE, message=FALSE}
+happiness_2018 <- rename(happiness_2018, 
+                         Happiness_Rank = "Overall rank",
+                         Country = "Country or region",
+                         Score = Score,
+                         Economy = "GDP per capita",
+                         Social_support = "Social support",
+                         Life_expectancy = "Healthy life expectancy",
+                         Freedom_of_choice = "Freedom to make life choices",
+                         Generosity = Generosity,
+                         Perceptions_of_corruption = "Perceptions of corruption")
+
+happiness_2018$Perceptions_of_corruption <- as.numeric(happiness_2018$Perceptions_of_corruption)
+```
+
+## Combining data and calculating score changes
+
+Now we will combine the data from both `happiness_2018` and `happiness_2018` by Country.
+
+```{r merging data frames, echo=FALSE, message=FALSE}
+happiness_merged <- inner_join(happiness_2019, happiness_2018, by = "Country")
+```
+
+With this combined data frame will calcuate the score differences between the year and save them to a new data frame.
+
+```{r calculate score differences, echo=FALSE, message=FALSE}
+happiness_change <- transmute(happiness_merged, Country = Country,
+                              Score_change = Score.x - Score.y, 
+                              Economy_change = Economy.x - Economy.y, 
+                              Social_support_change = Social_support.x - Social_support.y,
+                              Life_expectancy_change = Life_expectancy.x - Life_expectancy.y,
+                              Freedom_of_choice_change = Freedom_of_choice.x - Freedom_of_choice.y,
+                              Generosity_change = Generosity.x - Generosity.y,
+                              Perceptions_of_corruption_change = Perceptions_of_corruption.x - Perceptions_of_corruption.y)
+```
+
+## Conclusions based on score changes
+
+We will now plot the new data changes to see if we can identify correlations.
+
+```{r}
+ggplot(data = happiness_change, mapping = aes(x = Score_change, y = Economy_change)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+```{r}
+ggplot(data = happiness_change, mapping = aes(x = Score_change, y = Social_support_change)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+When looking at these charts we can notice that there is not as strong of a correlation between each factor and the change in score.
+
+## Conclusions
+
+1. Each factor does influence the score, but if we want to see a greater increase in happiness score, we must work to improve each factor not just focusing on one.
+2. Efforts can be more efficient if directed towards areas that the country has scored lower in.
+3. Just because a country has a lower happiness score, it does not mean that all of their scores are lower. It might mean that a few of these areas might need to be improved on.
